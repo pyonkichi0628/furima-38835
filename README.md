@@ -15,18 +15,13 @@
 ### Association
 - has_many :products dependent: :destroy
 - belongs_to :destination dependent: :destroy
-- belongs_to :card dependent: :destroy
 ====================================================================
 
 ##  destinations テーブル
 ===================================================================
 | Column             | Type       | Options                       | 
 | ------------------ | ---------- | ----------------------------- | 
-| user_id            | integer    | null: false, foreign_key: true|
-| family_name        | string     | null: false                   |
-| first_name         | string     | null: false                   |
-| family_name_kana   | string     | null: false                   |
-| first_name_kana    | string     | null: false                   |
+| user_id            | integer    | null: false                   |
 | post_code          | string     | null: false                   |
 | prefecture         | string     | null: false                   |
 | city               | string     | null: false                   |
@@ -35,19 +30,6 @@
 | phone_number       | string     | null: false                   |
 ### Association
 -
-====================================================================
-
-
-
-## cards テーブル
-===================================================================
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| user_id            | integer    | null: false, foreign_key: true |
-| customer_id        | string     | null: false                    |
-| card_id            | string     | null: false                    |
-### Association
-- belongs_to :user
 ====================================================================
 
 
