@@ -14,7 +14,6 @@
 | family_name_kana   | string | null: false              |
 | first_name_kana    | string | null: false              |
 | birth_day          | date   | null: false              |
-
 ### Association
 - has_many :products dependent: :destroy
 - belongs_to :destination dependent: :destroy
@@ -36,8 +35,6 @@
 | address            | string     | null: false                   |
 | building           | string     |                               |
 | phone_number       | string     |                               |
-
-
 ### Association
 - belongs_to :user
 ====================================================================
@@ -51,7 +48,6 @@
 | user_id            | integer    | null: false, foreign_key: true |
 | customer_id        | string     | null: false                    |
 | card_id            | string     | null: false                    |
-
 ### Association
 - belongs_to :user
 ====================================================================
@@ -64,11 +60,10 @@
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | ancestry           | string     |                                |
-
-
 ### Association
 - has_many: :products
 ====================================================================
+
 
 ## products テーブル
 ===================================================================
@@ -84,13 +79,10 @@
 | brand_id           | integer    | null: false, foreign_key: true |
 | shipping_id        | integer    | null: false, foreign_key: true |
 | user_id            | reference  | null: false, foreign_key: true |
-
-
 ### Association
 - belongs_to :user dependent: :destroy
 - belongs_to :category dependent: :destroy
 - belongs_to :brand dependent: :destroy
-
 - has_many :images dependent: destroy
 - belongs_to_active_hash :prefecture
 ====================================================================
@@ -102,9 +94,6 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | index: true                    |
-
-
 ### Association
 - has_many :product
-
 =====================================================================
