@@ -63,7 +63,6 @@
 - belongs_to :user dependent: :destroy
 - belongs_to :category dependent: :destroy
 - belongs_to :brand dependent: :destroy
-- has_many :images dependent: destroy
 - belongs_to_active_hash :prefecture
 ====================================================================
 
@@ -75,5 +74,5 @@
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | index: true                    |
 ### Association
-- has_many :product
+- has_many :products
 =====================================================================
