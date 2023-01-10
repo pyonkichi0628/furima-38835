@@ -1,12 +1,11 @@
 # テーブル設計
 
 ## users テーブル
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+====================================================================
 | Column             | Type   | Options                  | 
 | ------------------ | ------ | ------------------------ |
 | name               | string | null: false              |
-| email              | string | null: false              |
-| password           | string | null: false              |
+| email              | string | null: false, unique: true|
 | encrypted_password | string | null: false              |
 | user_image         | string |                          |
 | introduction       | text   |                          |
@@ -15,17 +14,14 @@
 | family_name_kana   | string | null: false              |
 | first_name_kana    | string | null: false              |
 | birth_day          | date   | null: false              |
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
 
 ### Association
-================================================
 - has_many :products dependent: :destroy
 - belongs_to :destination dependent: :destroy
 - belongs_to :card dependent: :destroy
-================================================
+====================================================================
 
-##  destination テーブル
+##  destinations テーブル
 ===================================================================
 | Column             | Type       | Options                       | 
 | ------------------ | ---------- | ----------------------------- | 
@@ -40,55 +36,54 @@
 | address            | string     | null: false                   |
 | building           | string     |                               |
 | phone_number       | string     |                               |
-===================================================================
 
 
 ### Association
 - belongs_to :user
+====================================================================
 
 
-## card テーブル
+
+## cards テーブル
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user_id            | integer    | null: false, foreign_key: true |
 | customer_id        | string     | null: false                    |
 | card_id            | string     | null: false                    |
-=====================================================================
 
 ### Association
 - belongs_to :user
+====================================================================
 
 
-## category テーブル
+
+## categories テーブル
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | ancestry           | string     |                                |
 
+
 ### Association
 - has_many: :products
+====================================================================
 
-
-## product テーブル
+## products テーブル
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | price              | string     | null: false                    |
-| description        | string     | null: false                    |
 | status             | string     | null: false                    |
-| size               | string     | null: false                    |
-| shipping_cost      | string     | null: false                    |
-| shipping_days      | string     | null: false                    |
-| prefecture_id      | string     | null: false                    |
-| judgment           | string     |                                |
+| shipping_cost_id   | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | category_id        | integer    | null: false, foreign_key: true |
 | brand_id           | integer    | null: false, foreign_key: true |
 | shipping_id        | integer    | null: false, foreign_key: true |
-| user_id            | integer    | null: false, foreign_key: true |
-====================================================================
+| user_id            | reference  | null: false, foreign_key: true |
 
 
 ### Association
@@ -98,28 +93,18 @@
 
 - has_many :images dependent: destroy
 - belongs_to_active_hash :prefecture
-
-
-## image テーブル
-===================================================================
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| image              | string     | null: false                    |
-| product_id         | integer    | null: false, foreign_key: true |
 ====================================================================
 
-### Association
-- belongs_to :product
 
 
-## brand テーブル
+## brands テーブル
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | index: true                    |
-====================================================================
 
 
 ### Association
 - has_many :product
 
+=====================================================================
