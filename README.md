@@ -70,7 +70,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| price              | string     | null: false                    |
+| price              | integer    | null: false                    |
 | status             | string     | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
