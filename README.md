@@ -58,7 +58,7 @@
 | category_id        | integer    | null: false, foreign_key: true |
 | brand_id           | integer    | null: false, foreign_key: true |
 | shipping_id        | integer    | null: false, foreign_key: true |
-| user_id            | reference  | null: false, foreign_key: true |
+| user               | reference  | null: false, foreign_key: true |
 ### Association
 - belongs_to :user dependent: :destroy
 - belongs_to :category dependent: :destroy
