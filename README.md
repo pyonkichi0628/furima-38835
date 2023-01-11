@@ -27,7 +27,7 @@
 | address            | string     | null: false                   |
 | building           | string     |                               |
 | phone_number       | string     | null: false                   |
-| item               | reference  | null: false, foreign_key: true|
+| item               | references | null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 ====================================================================
@@ -45,19 +45,18 @@
 | prefecture_id      | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | reference  | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :user 
-- belongs_to :item
-- belongs_to :destination
+- has_one :item
 ====================================================================
 
 ## items テーブル（購入情報）
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| product            | integer    | null: false, foreign_key: true |
-| user               | integer    | null: false, foreign_key: true |
+| product            | reference  | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :product
 - belongs_to :user
