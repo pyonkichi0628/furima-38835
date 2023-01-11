@@ -37,18 +37,19 @@
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| photo              | text       | null: false                    |
 | name               | string     | null: false                    |
-| explanation        | text       |                                |
-| category_id        | reference  | null: false, foreign_key: true |
+| explanation        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | reference  | null: false, foreign_key: true |
+| user               | integer    | null: false, foreign_key: true |
 ### Association
-- belongs_to :user dependent: :destroy
+- belongs_to :user 
+- belongs_to :destination
+- has_many :items
 ====================================================================
 
 ## items テーブル（購入情報）
@@ -57,7 +58,6 @@
 | ------------------ | ---------- | ------------------------------ |
 | product            | integer    | null: false, foreign_key: true |
 | user               | integer    | null: false, foreign_key: true |
-| purchase_info      | integer    | null: false, foreign_key: true |
 ### Association
 - belongs_to :product
 - belongs_to :user
