@@ -49,13 +49,14 @@
 ### Association
 - belongs_to :user 
 - has_one :item
+- belongs_to :destination
 ====================================================================
 
 ## items テーブル（購入情報）
 ===================================================================
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| product            | reference  | null: false, foreign_key: true |
+| product            | references | null: false, foreign_key: true |
 | user               | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :product
