@@ -27,9 +27,9 @@
 | address            | string     | null: false                   |
 | building           | string     |                               |
 | phone_number       | string     | null: false                   |
-| item_purchase      | integer    | null: false, foreign_key: true|
+| item               | reference  | null: false, foreign_key: true|
 ### Association
-- has_one :item
+- belongs_to :item
 ====================================================================
 
 
@@ -45,11 +45,11 @@
 | prefecture_id      | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | integer    | null: false, foreign_key: true |
+| user               | reference  | null: false, foreign_key: true |
 ### Association
 - belongs_to :user 
+- belongs_to :item
 - belongs_to :destination
-- has_many :items
 ====================================================================
 
 ## items テーブル（購入情報）
