@@ -98,37 +98,37 @@ RSpec.describe User, type: :model do
       it '姓（全角）が空だと登録できない' do
         @user.family_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('Family name 全角文字を使用してください')
+        expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
       it '名前が全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.first_name = 'rikutaro'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
       end
-      it '名（全角）が空だと登録できない' do
+      it '姓（カナ）が空だと登録できない' do
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
+        expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it '名字のフリガナが全角（カタカナ）でないと登録できない' do
         @user.family_name_kana = 'やまだ'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Family name kana カタカナを使用してください')
+        expect(@user.errors.full_messages).to include("Family name kana カタカナを使用してください")
       end
       it '姓（カナ）が空だと登録できない' do
         @user.family_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('Family name kana カタカナを使用してください')
+        expect(@user.errors.full_messages).to include("Family name kana can't be blank")
       end
       it '名前のフリガナが全角（カタカナ）でないと登録できない' do
         @user.first_name_kana = 'りくたろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kana カタカナを使用してください')
+        expect(@user.errors.full_messages).to include("First name kana カタカナを使用してください")
       end
       it '名（カナ）が空だと登録できない' do
-        @user.first_name_kana = 'りくたろう'
+        @user.first_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kana カタカナを使用してください')
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
       it '生年月日が空欄だと保存できない' do
         @user.birth_day = ''
