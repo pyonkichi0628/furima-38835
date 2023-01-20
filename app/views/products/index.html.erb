@@ -130,7 +130,7 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開 eachメソッドにて %>
       <% @products.each do |product| %>
         <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to product_path(product) do %>
           <div class='item-img-content'>
             <%= image_tag product.image.variant(resize: '500x500'), class: "item-img" if product.image.attached? %>
             <%# 商品が売れていればsold outと表示 %>
