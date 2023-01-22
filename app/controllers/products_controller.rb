@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  #下記ページではログインが必要
+  before_action :authenticate_user!, only: [:new, :create, :edit]
  
 
   def index
@@ -23,6 +24,22 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    if current_user.id != @product.user.id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.valid?
+      redirect_to product_path(product_params)
+    else
+      render 'edit'
+    end
+  end
 
   def product_params
     params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :shipping_cost_id,
