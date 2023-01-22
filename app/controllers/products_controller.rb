@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   #下記ページではログインが必要
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destoroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :matome, only: [:show, :edit, :update, :destroy]
  
 
