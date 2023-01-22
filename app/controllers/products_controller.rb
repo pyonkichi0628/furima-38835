@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   #下記ページではログインが必要
-  before_action :authenticate_user!, only: [:new, :create, :edit]
-  before_action :matome, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destoroy]
+  before_action :matome, only: [:show, :edit, :update, :destroy]
  
 
   def index
@@ -38,6 +38,14 @@ class ProductsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def destroy
+    if current_user.id == @product.user.id
+      @product.destroy
+      redirect_to root_path
+    end
+  end
+
 
   # 共通まとめ
   def matome
