@@ -59,7 +59,7 @@ RSpec.describe Product, type: :model do
       it 'カテゴリーの情報が「---」だと出品できない' do
         @product.category_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category must be other than 0")
+        expect(@product.errors.full_messages).to include('Category must be other than 0')
       end
       it 'カテゴリーの情報が空欄だと出品できない' do
         @product.category_id = nil
@@ -69,7 +69,7 @@ RSpec.describe Product, type: :model do
       it '商品の状態の情報が「---」だと出品できない' do
         @product.condition_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Condition must be other than 0")
+        expect(@product.errors.full_messages).to include('Condition must be other than 0')
       end
       it '商品の状態の情報が空欄だと出品できない' do
         @product.condition_id = nil
@@ -79,32 +79,32 @@ RSpec.describe Product, type: :model do
       it '配送料の負担の情報が「---」だと出品できない' do
         @product.shipping_cost_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping cost must be other than 0")
+        expect(@product.errors.full_messages).to include('Shipping cost must be other than 0')
       end
       it '配送料の負担の状態の情報が空欄だと出品できない' do
         @product.shipping_cost_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping cost must be other than 0")
+        expect(@product.errors.full_messages).to include('Shipping cost must be other than 0')
       end
       it '発送元の地域の情報が「---」だと出品できない' do
         @product.prefecture_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture must be other than 0")
+        expect(@product.errors.full_messages).to include('Prefecture must be other than 0')
       end
       it '発送元の地域の情報が空欄だと出品できない' do
         @product.prefecture_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture must be other than 0")
+        expect(@product.errors.full_messages).to include('Prefecture must be other than 0')
       end
       it '発送までの日数の情報が「---」だと出品できない' do
         @product.shipping_day_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping day must be other than 0")
+        expect(@product.errors.full_messages).to include('Shipping day must be other than 0')
       end
       it '発送までの日数の情報が空欄だと出品できない' do
         @product.shipping_day_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping day must be other than 0")
+        expect(@product.errors.full_messages).to include('Shipping day must be other than 0')
       end
       it '価格が空欄だと出品できない' do
         @product.price = nil
@@ -114,17 +114,17 @@ RSpec.describe Product, type: :model do
       it '価格の範囲が300円未満だと出品できない' do
         @product.price = 100
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '価格の範囲が9,999,999を超えると出品できない' do
         @product.price = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it '価格に半角数字以外が含まれている場合は出品できない' do
-        @product.price = "threemillion"
+        @product.price = 'threemillion'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price is not a number")
+        expect(@product.errors.full_messages).to include('Price is not a number')
       end
     end
   end

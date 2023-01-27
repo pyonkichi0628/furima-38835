@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
-  #下記ページではログインが必要
+  # 下記ページではログインが必要
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :matome, only: [:show, :edit, :update, :destroy]
-
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -16,9 +15,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
-   else
-    render :new
-   end
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,7 +25,7 @@ class ProductsController < ApplicationController
 
   def edit
     if current_user.id != @product.user.id || @product.item != nil
-      redirect_to root_path
+    redirect_to root_path
     end
   end
 
@@ -38,12 +37,12 @@ class ProductsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
-    #右の条件を満たすとき左を実行する
+    # 右の条件を満たすとき左を実行する
     @product.destroy if current_user == @product.user
-    #下記はそのまま実行
-      redirect_to root_path
+    # 下記はそのまま実行
+    redirect_to root_path
   end
 
   def product_params
@@ -55,9 +54,4 @@ class ProductsController < ApplicationController
   def matome
     @product = Product.find(params[:id])
   end
-
-
-
- 
-
 end

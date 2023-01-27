@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  #アソシエーション
+  # アソシエーション
   belongs_to :product
   belongs_to :user
   has_one :destination

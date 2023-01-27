@@ -1,4 +1,4 @@
 class Destination < ApplicationRecord
-  #アソシエーション
+  # アソシエーション
   belongs_to :item
 end
