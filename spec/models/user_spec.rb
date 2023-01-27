@@ -92,7 +92,7 @@ RSpec.describe User, type: :model do
       it '名字のフリガナが全角（カタカナ）でないと登録できない' do
         @user.family_name_kana = 'やまだ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana カタカナを使用してください")
+        expect(@user.errors.full_messages).to include('Family name kana カタカナを使用してください')
       end
       it '姓（カナ）が空だと登録できない' do
         @user.family_name_kana = ''
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
       it '名前のフリガナが全角（カタカナ）でないと登録できない' do
         @user.first_name_kana = 'りくたろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana カタカナを使用してください")
+        expect(@user.errors.full_messages).to include('First name kana カタカナを使用してください')
       end
       it '名（カナ）が空だと登録できない' do
         @user.first_name_kana = ''
