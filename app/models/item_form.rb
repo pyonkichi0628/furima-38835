@@ -20,10 +20,8 @@ class ItemForm
     validates :user_id
     # ここでitemを書かないのは下の処理でitemを作り実際にカラムに値を入れているからこの段階ではitemは値がない
     # トークン
-    # validates :token
+    validates :token
   end
-  # 建物名
-  validate :building
 
   def save
     # 各テーブルにデータを保存する処理

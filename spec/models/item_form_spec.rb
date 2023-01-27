@@ -102,11 +102,16 @@ RSpec.describe ItemForm, type: :model do
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include('Phone number is invalid')
       end
-      #it 'トークンが空だと保存できない' do
-      #  @item_form.token = nil
-     #   @item_form.valid?
-      #  expect(@item_form.errors.full_messages).to include("Token can't be blank")
-     #end
+      it '電話番号が9桁以下では購入できない' do
+        @item_form.phone_number = 12_345
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'トークンが空だと保存できない' do
+        @item_form.token = nil
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
