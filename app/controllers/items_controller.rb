@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product, only: [:index, :create]
 
   def index
     # フォームオブジェクトのインスタンスを生成し、インスタンす変数に代入する
     @item_form = ItemForm.new
-    set_product
     if current_user.id == @product.user.id || @product.item != nil
       redirect_to root_path
     end
@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
 
   def create
     @item_form = ItemForm.new(item_params)
-    set_product # renderを使う場合必要
     # バリデーションに通るか
     if @item_form.valid?
       pay_item
