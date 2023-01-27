@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   #下記ページではログインが必要
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :matome, only: [:show, :edit, :update, :destroy]
- 
+
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @product.user.id
+    if current_user.id != @product.user.id || @product.item != nil
       redirect_to root_path
     end
   end
@@ -46,15 +46,18 @@ class ProductsController < ApplicationController
       redirect_to root_path
   end
 
+  def product_params
+    params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :shipping_cost_id,
+                                    :prefecture_id, :shipping_day_id, :price).merge(user_id: current_user.id)
+  end
 
   # 共通まとめ
   def matome
     @product = Product.find(params[:id])
   end
 
-  def product_params
-    params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :shipping_cost_id,
-                                    :prefecture_id, :shipping_day_id, :price).merge(user_id: current_user.id)
-  end
+
+
+ 
 
 end
