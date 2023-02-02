@@ -7,7 +7,7 @@ set :application, 'furima-38835'
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:pyonkichi0628/furima-38835.git'
 
-#ブランチを指定する
+#ブランチを指定する 追加
 set :branch, "main"
 
 # バージョンが変わっても共通で参照するディレクトリを指定
